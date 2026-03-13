@@ -1,25 +1,35 @@
-import React from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
-import { TextInput } from 'react-native/types_generated/index'
- 
+const Drawer = createDraweNavigator();
+
 const App = () => {
-  return (
-    <SafeAreaView>
-      <Text>Mi primer Proyecto de reactr native</Text>
-      <TextInput/>
-    </SafeAreaView>
-  )
+    return (
+        <NavigationContainer>
+            <Drawer.Navigator
+                screenOptions={{
+                    drawerActiveTintColor: "pink",
+                    drawerInactiveTintColor: "black",
+                    drawerStyle: {
+                        backgroundColor: "white",
+                        width: 240
+                    }
+                }}
+            >
+                <Drawer.Screen
+                    name="Home"
+                    component={HomeScreen}
+                    options={{
+                        title: "Mi restaurante"
+                    }}
+                />
+                <Drawer.Screen
+                    name="Details"
+                    component={DetailsScreen}
+                    options={{
+                        title: "Detalles de la orden"
+                    }}
+                />
+            </Drawer.Navigator>
+        </NavigationContainer>
+    )
 }
- 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  baseText: {
-    fontWeight: 'bold',
-  },
-  innerText: {
-    color: 'red',
-  },
-});
+
 export default App
